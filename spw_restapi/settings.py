@@ -25,7 +25,7 @@ SECRET_KEY = 's&5td58qg-_hfvpa!$%v8805u*w5d(hzs0$yoog_&jnr@n$vnv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'spw_restapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
@@ -121,3 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
